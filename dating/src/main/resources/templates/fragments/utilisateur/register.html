@@ -1,0 +1,17 @@
+
+<form xmlns:th="http://www.thymeleaf.org" th:action="@{/register}" th:method="post">
+	<fieldset>
+		<legend th:text=#{user}></legend>
+		<label th:text="#{user.email}" ></label>
+		<input type="text" th:field="*{user.email}" th:placeholder=#{user.email}>
+		<span th:if="${#fields.hasErrors('user.email')}" th:errors="*{user.email}"></span><br>
+
+		<label th:text="#{situation.orientation}" ></label>
+		<select th:field="*{situation.orientation}">
+			<option value="" th:text="#{situation.orientation}" selected>
+			<option th:each="o : ${orientation}" th:value="${o}" th:text="${o.name()}"></option>
+		</select>
+		<span th:if="${#fields.hasErrors('situation.orientation')}" th:errors="*{situation.orientation}"></span>
+	</fieldset>
+	
+</form>

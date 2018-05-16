@@ -1,0 +1,16 @@
+ <!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org" >
+<head xmlns:th="http://www.thymeleaf.org">
+    <title th:text="#{site.name}"></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<div class="corps">
+<th:block th:replace="/fragments/nav"></th:block>
+<th:block th:replace="${fragment}"></th:block>
+<th:block th:replace="/fragments/footer"></th:block>
+
+</div>
+</body>
+</html>
