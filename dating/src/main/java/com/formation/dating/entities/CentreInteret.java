@@ -3,6 +3,7 @@ package com.formation.dating.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +20,9 @@ public class CentreInteret {
 	private String sport;
 	
 	private String loisir;
-	@ManyToMany
+	@ManyToMany(cascade= CascadeType.ALL)
 	private Collection<Multimedia> multimedias=new ArrayList<>();
-	@ManyToMany
+	@ManyToMany(cascade= CascadeType.ALL)
 	private Collection<Utilisateur> utilisateurs= new ArrayList<>();
 	
 	public CentreInteret() {

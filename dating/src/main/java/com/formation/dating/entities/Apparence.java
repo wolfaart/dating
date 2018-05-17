@@ -3,6 +3,7 @@ package com.formation.dating.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,6 @@ public class Apparence {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idApparence;
 	@NotNull
-	@NotBlank
 	private Integer taille;
 	@NotNull
 	@NotBlank
@@ -33,9 +33,8 @@ public class Apparence {
 	@NotBlank
 	private String typeCheveux;
 	@NotNull
-	@NotBlank
 	private Float masse;
-	@OneToMany
+	@OneToMany(cascade= CascadeType.ALL)
 	private Collection<Utilisateur> utilisateurs=new ArrayList<>();
 	
 	public Apparence() {

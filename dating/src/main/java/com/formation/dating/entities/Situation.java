@@ -3,7 +3,10 @@ package com.formation.dating.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.formation.dating.enumerations.Alcool;
+import com.formation.dating.enumerations.Fumeur;
 import com.formation.dating.enumerations.Orientation;
 
 @Entity
@@ -26,18 +31,17 @@ public class Situation {
 	@NotBlank
 	private String statutPerso;
 	@NotNull
-	@NotBlank
 	private Integer nbrEnfant;
 	@NotNull
-	@NotBlank
+	@Enumerated(EnumType.STRING)
 	private Orientation orientation;
 	@NotNull
-	@NotBlank
-	private String fumeur;
+	@Enumerated(EnumType.STRING)
+	private Fumeur fumeur;
 	@NotNull
-	@NotBlank
-	private String alcool;
-	@OneToMany
+	@Enumerated(EnumType.STRING)
+	private Alcool alcool;
+	@OneToMany(cascade= CascadeType.ALL)
 	private Collection<Utilisateur> utilisateurs= new ArrayList<>();
 	
 	public Situation() {
@@ -84,21 +88,8 @@ public class Situation {
 		this.orientation = orientation;
 	}
 
-	public String getFumeur() {
-		return fumeur;
-	}
 
-	public void setFumeur(String fumeur) {
-		this.fumeur = fumeur;
-	}
 
-	public String getAlcool() {
-		return alcool;
-	}
-
-	public void setAlcool(String alcool) {
-		this.alcool = alcool;
-	}
 
 	public Collection<Utilisateur> getUtilisateurs() {
 		return utilisateurs;
@@ -106,6 +97,22 @@ public class Situation {
 
 	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
 		this.utilisateurs = utilisateurs;
+	}
+
+	public Fumeur getFumeur() {
+		return fumeur;
+	}
+
+	public void setFumeur(Fumeur fumeur) {
+		this.fumeur = fumeur;
+	}
+
+	public Alcool getAlcool() {
+		return alcool;
+	}
+
+	public void setAlcool(Alcool alcool) {
+		this.alcool = alcool;
 	}
 
 

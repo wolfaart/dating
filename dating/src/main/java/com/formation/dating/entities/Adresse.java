@@ -3,6 +3,7 @@ package com.formation.dating.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +20,9 @@ public class Adresse {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idAdresse;
 	@NotNull
-	@NotBlank
 	@Column(length=5)
 	private Integer codePostal;
 	@NotNull
-	@NotBlank
 	@Column(length=4)
 	private Integer numero;
 	@NotNull
@@ -37,7 +36,7 @@ public class Adresse {
 	private String complement;
 
 	private String prefixe;
-	@OneToMany
+	@OneToMany(mappedBy="adresse",cascade= CascadeType.ALL)
 	private Collection<Utilisateur> utilisateurs= new ArrayList<>();
 	
 	public Adresse() {

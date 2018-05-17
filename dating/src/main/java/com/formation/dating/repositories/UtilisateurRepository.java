@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.formation.dating.entities.Utilisateur;
 
 @Repository
-public interface UtilisateurRepository extends CrudRepository<Utilisateur,Integer>{
+public interface UtilisateurRepository extends CrudRepository<Utilisateur,String>{
 
+	Utilisateur findUtilisateurByEmailAndMotDePasse(String email,String password);
 }

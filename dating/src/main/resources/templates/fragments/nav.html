@@ -1,24 +1,24 @@
 <div class="head" xmlns:th="http://www.thymeleaf.org">
 <header>
-<!-- <div style="float: right;padding: 5px;"><a th:if="${session.client!=null}" href="/client/logout" ><span style="padding-right: 5px;color:white8" th:text="${session.client.nom+' '+session.client.prenom}"></span><button>logout</button></a>
-<a th:if="${session.client!=null}" href="/panier" ><button>Mon panier</button></a>
-<a th:if="${session.client==null}" th:href="@{/client}"><button>creer compte</button></a></div>
-<div class="headLogo"><img class="logo" src="/img/logocosplaymarket.png"></div> -->
+<div style="float: right;padding: 5px;">
+<span th:if="${session.utilisateur!=null}" style="padding-right: 5px;color:white8" th:text="${session.utilisateur.nom}"></span>
+<a th:if="${session.utilisateur!=null}" href="/utilisateur/logout" >
+<button>logout</button>
+</a>
+<a th:if="${session.utilisateur==null}" th:href="@{/utilisateur/connexion}"><button>se connecter</button></a></div>
+<a th:if="${session.utilisateur==null}" th:href="@{/register}"><button>creer compte</button></a></div>
+<span>meetiX</span>
 </header>
 <hr style="padding: 0; margin: 0;">
 
 
 <nav xmlns:th="http://www.thymeleaf.org" style="margin: 0;padding: 0;">
-<div class="divglogo">
-<!-- <img src="/img/logogros.png" class="groslogo"> -->
-</div>
+
 <hr style="width: 80%;margin: auto;">
 <div class="barremenu" style="margin: 0;padding: 0;width: 80%;margin: auto;">
 	<ul class="menu" style="margin: 0;padding: 0;">
 		<li><a th:href="@{/}" class="menubtn">ACCUEIL</a></li>
-	<!-- 	<li><a th:href="@{/categorie}"  class="menubtn">CATEGORIE</a></li>
-		<li><a th:href="@{/articles}"  class="menubtn">ARTICLES</a></li>
-		<li><a th:href="@{/client/mescommandes}"  class="menubtn">MON COMPTE</a></li> -->
+	    <li><a th:href="@{/utilisateur/account}"  class="menubtn">MON COMPTE</a></li>
 	</ul>
 	<hr style="padding: 0; margin-top: 20px;">
 </div>

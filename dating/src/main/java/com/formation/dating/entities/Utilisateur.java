@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -18,6 +21,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.formation.dating.enumerations.Sexe;
 
 @Entity
 public class Utilisateur {
@@ -35,9 +40,8 @@ public class Utilisateur {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateDeNaissance;
 	@NotNull
-	@NotBlank
-	@Column(length=6)
-	private String sexe;
+	@Enumerated(EnumType.STRING)
+	private Sexe sexe;
 	@NotNull
 	@NotBlank
 	private String motDePasse;
@@ -52,15 +56,15 @@ public class Utilisateur {
 	@NotNull
 	@Column(length=10)
 	private String numeroTel;
-	@NotNull
+
 	private Integer type;
-	@ManyToOne
+	@ManyToOne(cascade= CascadeType.ALL)
 	private Adresse adresse;
-	@ManyToOne
+	@ManyToOne(cascade= CascadeType.ALL)
 	private Situation situation;
-	@OneToMany
+	@OneToMany(mappedBy="utilisateur",cascade= CascadeType.ALL)
 	private Collection<Photo> photos=new ArrayList<>();
-	@ManyToMany
+	@ManyToMany(mappedBy="utilisateurs",cascade= CascadeType.ALL)
 	private Collection<CentreInteret> centreInterets= new ArrayList<>();
 	
 	
@@ -96,13 +100,7 @@ public class Utilisateur {
 		this.dateDeNaissance = dateDeNaissance;
 	}
 
-	public String getSexe() {
-		return sexe;
-	}
 
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
-	}
 
 	public String getMotDePasse() {
 		return motDePasse;
@@ -161,6 +159,66 @@ public class Utilisateur {
 		}
 		return generatedPassword;
 		}
+
+
+
+	public Sexe getSexe() {
+		return sexe;
+	}
+
+
+
+	public void setSexe(Sexe sexe) {
+		this.sexe = sexe;
+	}
+
+
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+
+
+	public Situation getSituation() {
+		return situation;
+	}
+
+
+
+	public void setSituation(Situation situation) {
+		this.situation = situation;
+	}
+
+
+
+	public Collection<Photo> getPhotos() {
+		return photos;
+	}
+
+
+
+	public void setPhotos(Collection<Photo> photos) {
+		this.photos = photos;
+	}
+
+
+
+	public Collection<CentreInteret> getCentreInterets() {
+		return centreInterets;
+	}
+
+
+
+	public void setCentreInterets(Collection<CentreInteret> centreInterets) {
+		this.centreInterets = centreInterets;
+	}
 	
 	
 	

@@ -3,6 +3,7 @@ package com.formation.dating.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Multimedia {
 	@NotBlank
 	@NotNull
 	private String artiste;
-	@ManyToMany
+	@ManyToMany(cascade= CascadeType.ALL)
 	private Collection<CentreInteret> centreInterets= new ArrayList<>();
 	
 	public Multimedia() {

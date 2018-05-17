@@ -23,4 +23,8 @@ public class UtilisateurService {
 	public Utilisateur save(Utilisateur u) {
 		return utilisateurRepository.save(u);
 	}
+	
+	public Utilisateur login(String email, String password) {
+		return utilisateurRepository.findUtilisateurByEmailAndMotDePasse(email, password);
+	}
 }
